@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BoXueGu.iml" filepath="$PROJECT_DIR$/BoXueGu.iml" />
       <module fileurl="file://$PROJECT_DIR$/BoXueGu1.iml" filepath="$PROJECT_DIR$/BoXueGu1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boxuegu.iml" filepath="$PROJECT_DIR$/boxuegu.iml" />
       <module fileurl="file://$PROJECT_DIR$/boxuegu2.iml" filepath="$PROJECT_DIR$/boxuegu2.iml" />
       <module fileurl="file://$PROJECT_DIR$/boxuegu3.iml" filepath="$PROJECT_DIR$/boxuegu3.iml" />
     </modules>
