@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 2:
                 mMyInfoBtn.setSelected(true);
                 iv_myInfo.setImageResource(R.drawable.main_my_icon_selected);
-                tv_course.setTextColor(Color.parseColor("#0097F7"));
+                tv_myInfo.setTextColor(Color.parseColor("#0097F7"));
                 rl_title_bar.setVisibility(View.GONE);
         }
     }

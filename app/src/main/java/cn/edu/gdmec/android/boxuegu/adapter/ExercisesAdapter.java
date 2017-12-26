@@ -51,7 +51,7 @@ public class ExercisesAdapter extends BaseAdapter{
         //复用convertView
         if (convertView == null){
             vh = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.exercises_detail_list_item,null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.exercises_list_item,null);
             vh.title = (TextView) convertView.findViewById(R.id.tv_title);
             vh.content = (TextView) convertView.findViewById(R.id.tv_content);
             vh.order = (TextView) convertView.findViewById(R.id.tv_order);

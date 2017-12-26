@@ -53,7 +53,7 @@ public class ExercisesDetailAdapter extends BaseAdapter{
         if (convertView == null){
             vh = new ViewHolder();
             convertView = LayoutInflater.from(mContent).inflate(R.layout.exercises_detail_list_item,null);
-            vh.subject = (TextView) convertView.findViewById(R.id.tv_a);
+            vh.subject = (TextView) convertView.findViewById(R.id.tv_subject);
             vh.tv_a = (TextView) convertView.findViewById(R.id.tv_a);
             vh.tv_b = (TextView) convertView.findViewById(R.id.tv_b);
             vh.tv_c = (TextView) convertView.findViewById(R.id.tv_c);

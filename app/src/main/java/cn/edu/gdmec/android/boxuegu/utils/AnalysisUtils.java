@@ -25,8 +25,8 @@ public class AnalysisUtils {
         parser.setInput(is,"utf-8");
         List<ExercisesBean> exercisesInfos=null;
         ExercisesBean exercisesInfo=null;
-        int type=parser.getEventType();
-        while (type!=XmlPullParser.START_DOCUMENT){
+        int type = parser.getEventType();
+        while (type!=XmlPullParser.END_DOCUMENT){
             switch (type){
                 case XmlPullParser.START_TAG:
                     if ("infos".equals(parser.getName())){
