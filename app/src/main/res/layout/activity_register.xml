@@ -14,7 +14,7 @@
         android:layout_height="70dp" />
     <EditText
         android:singleLine="true"
-        android:id="@+id/et_user_name"
+        android:id="@+id/et_username"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:background="@drawable/register_user_name_bg"
@@ -63,8 +63,17 @@
         android:textSize="14sp"/>
 
     <Button
-        android:layout_width="40dp"
+        android:text="注册"
+        android:id="@+id/btn_register"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:background="@drawable/register_icon_selected"/>
+        android:background="@drawable/register_selector"/>
+
 
 </LinearLayout>
