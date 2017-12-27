@@ -1,5 +1,6 @@
 package cn.edu.gdmec.android.boxuegu.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cn.edu.gdmec.android.boxuegu.R;
+import cn.edu.gdmec.android.boxuegu.activity.LoginActivity;
 import cn.edu.gdmec.android.boxuegu.utils.AnalysisUtils;
 
 /**
@@ -51,7 +54,30 @@ public class MyInfoView {
                 if (readLoginStatus()){
                     //跳转到个人资料界面
                 }else {
+                    Intent intent = new Intent(mContext, LoginActivity.class);
+                    ((Activity) mContext).startActivityForResult(intent,1);
+                }
+            }
+        });
+        rl_course_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (readLoginStatus()){
+                    //跳转到播放记录页面
 
+                }else {
+                    Toast.makeText(mContext,"您还未登录，请先登录",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        rl_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (readLoginStatus()){
+                    //跳转到设置页面
+
+                }else {
+                    Toast.makeText(mContext,"您还未登录，请先登录",Toast.LENGTH_SHORT).show();
                 }
             }
         });
