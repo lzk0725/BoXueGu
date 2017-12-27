@@ -2,6 +2,7 @@ package cn.edu.gdmec.android.boxuegu.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //设置此界面为竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         init();
     }
 
@@ -71,8 +74,8 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (TextUtils.isEmpty(pswAgain)){
                     Toast.makeText(RegisterActivity.this,"请再次输入密码",Toast.LENGTH_SHORT).show();
                     return;
-                }else if(!et_psw.equals(pswAgain)){
-                    Toast.makeText(RegisterActivity.this,"输入两次的密码不一样",Toast.LENGTH_SHORT).show();
+                }else if(!psw.equals(pswAgain)){
+                    Toast.makeText(RegisterActivity.this,"两次的密码不一样",Toast.LENGTH_SHORT).show();
                     return;
                 }else if (isExistUserName(userName)){
                     Toast.makeText(RegisterActivity.this,"此账户已经存在",Toast.LENGTH_SHORT).show();
@@ -114,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void getEditString() {
         userName = et_user_name.getText().toString().trim();
-        psw = et_psw.getText().toString();
-        pswAgain = et_psw_again.getText().toString();
+        psw = et_psw.getText().toString().trim();
+        pswAgain = et_psw_again.getText().toString().trim();
     }
 }
