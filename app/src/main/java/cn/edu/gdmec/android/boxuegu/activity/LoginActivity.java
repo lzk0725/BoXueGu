@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         tv_find_psw = (TextView) findViewById(R.id.tv_find_psw);
         btn_login = (Button) findViewById(R.id.btn_login);
         et_user_name = (EditText) findViewById(R.id.et_user_name);
-        et_psw = (EditText) findViewById(R.id.et_pwd);
+        et_psw = (EditText) findViewById(R.id.et_psw);
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

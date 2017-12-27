@@ -17,6 +17,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="75dp"/>
         <TextView
+            android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -91,7 +92,7 @@
             android:layout_toRightOf="@+id/iv_userinfo_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="播放记录"
+            android:text="设置"
             android:textColor="#A3A3A3"/>
         <ImageView
             android:src="@drawable/iv_right_arrow"

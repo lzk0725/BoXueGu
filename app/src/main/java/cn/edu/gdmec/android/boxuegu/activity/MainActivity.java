@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,14 +19,19 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.boxuegu.R;
 import cn.edu.gdmec.android.boxuegu.view.ExercisesView;
+import cn.edu.gdmec.android.boxuegu.view.MyInfoView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+
     //    视图
     private ExercisesView mExercisesView;
     //    中间内容栏
     private FrameLayout mBodyLayout;
     //    底部按钮
     public LinearLayout mBottomLayout;
+
+    private MyInfoView mMyInfoView;
 
     private View mCourseBtn;
     private View mExercisesBtn;
@@ -178,6 +184,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case 2:
 //                我的界面
+                if (mMyInfoView == null){
+                    mMyInfoView = new MyInfoView(this);
+                    mBodyLayout.addView(mMyInfoView.getView());
+                }else {
+                    mMyInfoView.getView();
+                }
+                mMyInfoView.showView();
                 break;
         }
     }
@@ -188,8 +201,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            从设置界面或登录界面传递过来的登录状态
             boolean isLogin=data.getBooleanExtra("isLogin",false);
             if (isLogin){
+                //登录成功后显示课程界面
                 clearBottomImageState();
                 selectDisplayView(0);
+            }
+            if (mMyInfoView != null){
+                mMyInfoView.setLoginParams(isLogin);
             }
         }
     }

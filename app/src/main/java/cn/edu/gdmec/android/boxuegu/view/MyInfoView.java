@@ -23,7 +23,7 @@ import cn.edu.gdmec.android.boxuegu.utils.AnalysisUtils;
 public class MyInfoView {
     private Context mContext;
     private final LayoutInflater minflater;
-    private View mCurrentvView;
+    private View mCurrentView;
     private LinearLayout ll_head;
     private ImageView iv_head_icon;
     private RelativeLayout rl_course_history;
@@ -35,16 +35,27 @@ public class MyInfoView {
         minflater = LayoutInflater.from(mContext);
     }
 
+    public View getView(){
+        if (mCurrentView == null){
+            createView();
+        }
+        return mCurrentView;
+    }
+
+    private void createView() {
+        initView();
+    }
+
     private void initView(){
-        mCurrentvView = minflater.inflate(R.layout.main_view_myinfo, null);
-        ll_head = (LinearLayout) mCurrentvView.findViewById(R.id.ll_head);
-        iv_head_icon = (ImageView) mCurrentvView.findViewById(R.id.iv_head_icon);
+        mCurrentView = minflater.inflate(R.layout.main_view_myinfo, null);
+        ll_head = (LinearLayout) mCurrentView.findViewById(R.id.ll_head);
+        iv_head_icon = (ImageView) mCurrentView.findViewById(R.id.iv_head_icon);
 
-        rl_course_history = (RelativeLayout) mCurrentvView.findViewById(R.id.rl_course_history);
-        rl_setting = (RelativeLayout) mCurrentvView.findViewById(R.id.rl_setting);
+        rl_course_history = (RelativeLayout) mCurrentView.findViewById(R.id.rl_course_history);
+        rl_setting = (RelativeLayout) mCurrentView.findViewById(R.id.rl_setting);
 
-        tv_user_name = (TextView) mCurrentvView.findViewById(R.id.et_username);
-        mCurrentvView.setVisibility(View.VISIBLE);
+        tv_user_name = (TextView) mCurrentView.findViewById(R.id.tv_user_name);
+        mCurrentView.setVisibility(View.VISIBLE);
         setLoginParams(readLoginStatus());
 
         ll_head.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +66,14 @@ public class MyInfoView {
                     //跳转到个人资料界面
                 }else {
                     Intent intent = new Intent(mContext, LoginActivity.class);
+                    //带回用户名
                     ((Activity) mContext).startActivityForResult(intent,1);
                 }
             }
         });
+
+
+
         rl_course_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +98,7 @@ public class MyInfoView {
         });
     }
 
-    private void setLoginParams(boolean isLogin) {
+    public void setLoginParams(boolean isLogin) {
         if (isLogin){
             tv_user_name.setText(AnalysisUtils.readLoginUserName(mContext));
         }else {
@@ -95,5 +110,12 @@ public class MyInfoView {
         SharedPreferences sp = mContext.getSharedPreferences("loginInfo",Context.MODE_PRIVATE);
         boolean isLogin = sp.getBoolean("isLogin",false);
         return isLogin;
+    }
+
+    public void showView(){
+        if (mCurrentView == null){
+            createView();
+        }
+        mCurrentView.setVisibility(View.VISIBLE);
     }
 }

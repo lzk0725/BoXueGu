@@ -9,6 +9,7 @@
     <include layout="@layout/main_title_bar"></include>
 
     <ImageView
+        android:id="@+id/iv_head"
         android:src="@drawable/default_icon"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="25dp"
@@ -33,7 +34,7 @@
         android:textSize="14sp"/>
     <EditText
         android:singleLine="true"
-        android:id="@+id/et_pwd"
+        android:id="@+id/et_psw"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:background="@drawable/login_psw_bg"
