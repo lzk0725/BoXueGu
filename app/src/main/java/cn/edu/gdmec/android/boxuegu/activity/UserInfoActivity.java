@@ -47,12 +47,13 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         tv_main_title.setText("个人资料");
         rl_title_bar = (RelativeLayout) findViewById(R.id.title_bar);
         rl_title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
+
         rl_nickName = (RelativeLayout) findViewById(R.id.rl_nickName);
-        rl_sex = (RelativeLayout) findViewById(R.id.rl_sex);
-        rl_signatrue = (RelativeLayout) findViewById(R.id.rl_signatrue);
         tv_nickName = (TextView)findViewById(R.id.tv_nickName);
         tv_user_name = (TextView)findViewById(R.id.tv_user_name);
+        rl_sex = (RelativeLayout) findViewById(R.id.rl_sex);
         tv_sex = (TextView)findViewById(R.id.tv_sex);
+        rl_signatrue = (RelativeLayout) findViewById(R.id.rl_signatrue);
         tv_sinnature = (TextView)findViewById(R.id.tv_signatrue);
 
     }
@@ -65,9 +66,9 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         if (bean == null) {
             bean = new UserBean();
             bean.userName = spUserName;
-            bean.userName = "问答精灵";
+            bean.nickName = "问答精灵";
             bean.sex = "男";
-            bean.signature = "问答精灵";
+            bean.signature = "hello";
             //保存用户信息到数据库
             DBUtils.getInstance(this).saveUserInfo(bean);
         }

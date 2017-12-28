@@ -105,14 +105,13 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
     private void contentListener() {
         et_content.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence s, int start, int before, int count) {
 
             }
-
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Editable editable = et_content.getText();
-                int len = editable.length();
+                int len = editable.length();//输入文本长度
                 if (len>0){
                     iv_delete.setVisibility(View.VISIBLE);
                 }else {
