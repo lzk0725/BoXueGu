@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                     //保存登录状态和登录用户名
                     saveloginStatus(true, username);
                     Intent data = new Intent();
-                    data.putExtra("islogin",true);
+                    data.putExtra("isLogin",true);
                     setResult(RESULT_OK,data);
                     LoginActivity.this.finish();
                     //跳到主页
@@ -97,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }else{
                     Toast.makeText(LoginActivity.this, "此用户不存在", Toast.LENGTH_SHORT).show();
-                    return;
                 }
             }
         });
@@ -108,8 +107,8 @@ public class LoginActivity extends AppCompatActivity {
         //loginInfo表示文件名
         SharedPreferences sp = getSharedPreferences("loginInfo",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();//获取编辑器
-        editor.putBoolean("islogin",status);//存入boolean类型的登录状态
-        editor.putString("loginWserName",username);//存入登录时的用户名
+        editor.putBoolean("isLogin",status);//存入boolean类型的登录状态
+        editor.putString("loginUserName",username);//存入登录时的用户名
         editor.commit();//提交修改
 
     }
@@ -125,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null){
             //从注册界面传递过来的用户名
-            String userName = data.getStringExtra("suerName");
+            String userName = data.getStringExtra("userName");
             if (!TextUtils.isEmpty(userName)){
                 et_user_name.setText(userName);
                 //设置光标位置

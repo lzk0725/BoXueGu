@@ -242,7 +242,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void clearLoginStatus() {
         SharedPreferences sp = getSharedPreferences("loginInfo",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();//获取编辑器
-        editor.putBoolean("islogin",false);//清除登录状态
+        editor.putBoolean("isLogin",false);//清除登录状态
+        editor.putString("loginUserName","");//清除登录时的用户名
         editor.commit();//提交修改
     }
 }
