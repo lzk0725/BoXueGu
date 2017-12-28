@@ -2,6 +2,7 @@ package cn.edu.gdmec.android.boxuegu.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,23 +15,32 @@ import cn.edu.gdmec.android.boxuegu.R;
 
 public class SettingActivity extends AppCompatActivity {
 
+    private TextView tv_main_title;
+    private TextView tv_back;
+    private RelativeLayout rl_title_bar;
+    private RelativeLayout rl_modiy_psw;
+    private RelativeLayout rl_security_setting;
+    private RelativeLayout rl_exit_login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
+        //设置此界面为竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //instance = this;
         init();
     }
 
     private void init() {
-        TextView tv_main_title = (TextView)findViewById(R.id.tv_main_title);
+        tv_main_title = (TextView)findViewById(R.id.tv_main_title);
         tv_main_title.setText("设置");
-        TextView tv_back = (TextView) findViewById(R.id.tv_back);
-        RelativeLayout rl_title_bar = ((RelativeLayout) findViewById(R.id.title_bar));
+        tv_back = (TextView) findViewById(R.id.tv_back);
+        rl_title_bar = ((RelativeLayout) findViewById(R.id.title_bar));
         rl_title_bar.setBackgroundColor(Color.parseColor("#30B4FF"));
-        RelativeLayout rl_modiy_psw = (RelativeLayout) findViewById(R.id.rl_modiy_psw);
-        RelativeLayout rl_security_setting = (RelativeLayout) findViewById(R.id.rl_security_setting);
-        RelativeLayout rl_exit_login = (RelativeLayout) findViewById(R.id.rl_exit_login);
+        rl_modiy_psw = (RelativeLayout) findViewById(R.id.rl_modiy_psw);
+        rl_security_setting = (RelativeLayout) findViewById(R.id.rl_security_setting);
+        rl_exit_login = (RelativeLayout) findViewById(R.id.rl_exit_login);
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +57,10 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //跳转到设置密保页面
+                Intent intent = new Intent(SettingActivity.this,FindPswActivity.class);
+                intent.putExtra("from","security");
+                startActivity(intent);
+
             }
         });
         rl_exit_login.setOnClickListener(new View.OnClickListener() {
@@ -68,5 +82,6 @@ public class SettingActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isLogin",false);
         editor.putString("loginUserName","");
+        editor.commit();
     }
 }
