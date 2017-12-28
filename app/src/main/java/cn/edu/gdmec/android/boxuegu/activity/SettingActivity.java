@@ -15,6 +15,7 @@ import cn.edu.gdmec.android.boxuegu.R;
 
 public class SettingActivity extends AppCompatActivity {
 
+    public static SettingActivity instance = null;
     private TextView tv_main_title;
     private TextView tv_back;
     private RelativeLayout rl_title_bar;
@@ -28,7 +29,7 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         //设置此界面为竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //instance = this;
+        instance = this;
         init();
     }
 
@@ -51,6 +52,8 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //跳转到修改密码页面
+                Intent intent = new Intent(SettingActivity.this,ModifyPswActivity.class);
+                startActivity(intent);
             }
         });
         rl_security_setting.setOnClickListener(new View.OnClickListener() {
