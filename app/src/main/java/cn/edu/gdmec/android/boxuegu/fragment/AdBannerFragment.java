@@ -47,7 +47,10 @@ public class AdBannerFragment extends Fragment {
             }
         }
     }
-
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -61,7 +64,7 @@ public class AdBannerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //创建广告图片空间
         iv = new ImageView(getActivity());
-        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
         iv.setLayoutParams(lp);//图片的宽高参数
         iv.setScaleType(ImageView.ScaleType.FIT_XY);
         return iv;

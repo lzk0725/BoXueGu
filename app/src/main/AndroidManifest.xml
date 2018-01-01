@@ -12,7 +12,6 @@
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,6 +24,10 @@
         <activity android:name=".activity.ModifyPswActivity" />
         <activity android:name=".activity.FindPswActivity" />
         <activity android:name=".activity.ChangeUserInfoActivity"></activity>
+        <activity android:name=".activity.PlayHistoryActivity" />
+
+        <activity android:name=".activity.VideoPlayActivity" />
+        <activity android:name=".activity.VideoListActivity"></activity>
     </application>
 
 </manifest>

@@ -20,11 +20,12 @@ public class ViewPagerIndicator extends LinearLayout {
     private Context context;
 
     public ViewPagerIndicator(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public ViewPagerIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         setGravity(Gravity.CENTER);
     }
     public void setCurrentPosition(int currentIndex){
