@@ -30,10 +30,10 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.execSQL("CREATE TABLE  IF NOT EXISTS " + U_VIDEO_PLAY_LIST + "( "
             + "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
             + "userName VARCHAR, " //用户名
-            + "chapter INT, " //章节
+            + "chapterId INT, " //章节
             + "videoId int, "       //小节id
-            + "videoPath VARCHAR"  //视频地址
-            + "title VARCHAR"//视频章节名称
+            + "videoPath VARCHAR,"  //视频地址
+            + "title VARCHAR,"//视频章节名称
             + "secondTitle VARCHAR"//视频名单
             + ")");
 }
