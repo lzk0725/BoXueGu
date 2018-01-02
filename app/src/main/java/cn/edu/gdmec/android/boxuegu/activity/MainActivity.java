@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void createView(int viewIndex) {
         switch (viewIndex){
             case 0:
-/**                课程界面 **/
+/**                课程界面**/
                 if (mCourseView==null){
                     mCourseView=new CourseView(this);
                     mBodyLayout.addView(mCourseView.getView());

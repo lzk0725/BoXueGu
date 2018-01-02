@@ -94,7 +94,7 @@ public class CourseAdapter extends BaseAdapter {
                         //右边
                         vh.tv_right_img_title.setText(bean.imgTitle);
                         vh.tv_right_title.setText(bean.title);
-                        setLeftImg(bean.id,vh.iv_right_img);
+                        setRightImg(bean.id,vh.iv_right_img);
                         vh.iv_right_img.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -112,25 +112,25 @@ public class CourseAdapter extends BaseAdapter {
             }
         }
 
-        return null;
+        return convertView;
     }
 
-    private void setRightImg(int id, ImageView iv_left_img) {
+    private void setRightImg(int id, ImageView iv_right_img) {
         switch (id){
             case 2:
-                iv_left_img.setImageResource(R.drawable.chapter_2_icon);
+                iv_right_img.setImageResource(R.drawable.chapter_2_icon);
                 break;
             case 4:
-                iv_left_img.setImageResource(R.drawable.chapter_4_icon);
+                iv_right_img.setImageResource(R.drawable.chapter_4_icon);
                 break;
             case 6:
-                iv_left_img.setImageResource(R.drawable.chapter_6_icon);
+                iv_right_img.setImageResource(R.drawable.chapter_6_icon);
                 break;
             case 8:
-                iv_left_img.setImageResource(R.drawable.chapter_8_icon);
+                iv_right_img.setImageResource(R.drawable.chapter_8_icon);
                 break;
             case 10:
-                iv_left_img.setImageResource(R.drawable.chapter_10_icon);
+                iv_right_img.setImageResource(R.drawable.chapter_10_icon);
                 break;
         }
     }

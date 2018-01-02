@@ -42,6 +42,7 @@ public class CourseView {
     private List<CourseBean> cadl;
     public CourseView(FragmentActivity context){
         mContext = context;
+        //为之后将layout转化为view时用
         mInflater = LayoutInflater.from(mContext);
     }
     private void createView() {
@@ -51,6 +52,7 @@ public class CourseView {
         initView();
         new AdAutoSlidThread().start();
     }
+    //事件捕获
     class MHandler extends Handler{
         @Override
         public void dispatchMessage(Message msg) {
@@ -58,12 +60,13 @@ public class CourseView {
             switch (msg.what){
                 case MSG_AD_SLID:
                     if (ada.getCount()>0){
-                        adPager.setCurrentItem(adPager.getCurrentItem()+1);
+                        adPager.setCurrentItem(adPager.getCurrentItem() + 1);
                     }
                     break;
             }
         }
     }
+    //广告自动滑动
     class AdAutoSlidThread extends Thread{
         @Override
         public void run() {
@@ -79,6 +82,7 @@ public class CourseView {
             }
         }
     }
+    //初始化控件
     private void initView(){
         mCurrentView = mInflater.inflate(R.layout.main_view_course,null);
         lv_list = (ListView)mCurrentView.findViewById(R.id.lv_list);
@@ -88,7 +92,7 @@ public class CourseView {
         adPager = (ViewPager)mCurrentView.findViewById(R.id.vp_advertBanner);
         adPager.setLongClickable(false);
         ada = new AdBannerAdapter(mContext.getSupportFragmentManager(),mHandler);
-        adPager.setAdapter(ada);
+        adPager.setAdapter(ada);//给viewpager设置适配器
         adPager.setOnTouchListener(ada);
         vpi = (ViewPagerIndicator) mCurrentView.findViewById(R.id.vpi_advert_indict);
         vpi.setCount(ada.getSize());
@@ -133,6 +137,7 @@ public class CourseView {
         display.getMetrics(metrics);
         return metrics.widthPixels;
     }
+    //初始化广告中的数据
     private void initAdData() {
         cadl = new ArrayList<CourseBean>();
         for (int i = 0;i<3;i++){
@@ -154,6 +159,7 @@ public class CourseView {
             cadl.add(bean);
         }
     }
+    //获取课程信息
     private void getCourseData(){
         try {
             InputStream is = mContext.getResources().getAssets().open("chaptertitle.xml");

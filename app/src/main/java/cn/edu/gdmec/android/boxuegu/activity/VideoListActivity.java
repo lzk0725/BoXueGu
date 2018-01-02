@@ -48,9 +48,13 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
+        //设置此界面为竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //从课程界面传递过来的章节id
         chapterId=getIntent().getIntExtra("id",0);
+        //从课程界面传递过来的章节简介
         intro=getIntent().getStringExtra("intro");
+        //创建数据库工具类的对象
         db=DBUtils.getInstance(VideoListActivity.this);
         initData();
         init();
@@ -64,14 +68,15 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
         adapter=new VideoListAdapter(this,new VideoListAdapter.OnSelectListener(){
             @Override
             public void onSelect(int position, ImageView iv){
-                adapter.setSelectedPosition(position);
+                adapter.setSelectedPosition(position);//设置适配器的选中项
                 VideoBean bean=videoList.get(position);
                 String videoPath=bean.videoPath;
-                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();//更新列表框
                 if (TextUtils.isEmpty(videoPath)){
                     Toast.makeText(VideoListActivity.this,"本地没有此视频，暂无法播放",Toast.LENGTH_SHORT).show();
                     return;
                 }else {
+                    //判断是否登录
                     if (readLoginStatus()){
                         String userName= AnalysisUtils.readLoginUserName(VideoListActivity.this);
                         db.saveVideoPlayList(videoList.get(position),userName);
@@ -93,10 +98,11 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
         tv_intro.setTextColor(Color.parseColor("#FFFFFF"));
         tv_video.setTextColor(Color.parseColor("#000000"));
     }
+    //控件的点击事件
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.tv_intro:
+            case R.id.tv_intro://简介
                 lv_video_list.setVisibility(View.GONE);
                 sv_chapter_intro.setVisibility(View.VISIBLE);
                 tv_intro.setBackgroundColor(Color.parseColor("#30B4FF"));
@@ -104,7 +110,7 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
                 tv_intro.setTextColor(Color.parseColor("#FFFFFF"));
                 tv_video.setTextColor(Color.parseColor("#000000"));
                 break;
-            case R.id.tv_video:
+            case R.id.tv_video://视频
                 lv_video_list.setVisibility(View.VISIBLE);
                 sv_chapter_intro.setVisibility(View.GONE);
                 tv_intro.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -145,7 +151,7 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
         StringBuilder sb=null;
         String line=null;
         try{
-            sb=new StringBuilder();
+            sb=new StringBuilder();//实例化一个对象
             reader=new BufferedReader(new InputStreamReader(in));
             while ((line=reader.readLine())!=null){
                 sb.append(line);
@@ -156,10 +162,10 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
             return "";
         }finally {
             try {
-                if (in!=null){
+                if (in != null){
                     in.close();
                 }
-                if (reader!=null){
+                if (reader != null){
                     reader.close();
                 }
             }catch (IOException e){
@@ -177,8 +183,9 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
     protected void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         if (data!=null){
+            //接收播放界面回传过来的被选中的视频的位置
             int position=data.getIntExtra("position",0);
-            adapter.setSelectedPosition(position);
+            adapter.setSelectedPosition(position);//设置被选中的位置
             lv_video_list.setVisibility(View.VISIBLE);
             sv_chapter_intro.setVisibility(View.GONE);
             tv_intro.setBackgroundColor(Color.parseColor("#FFFFFF"));

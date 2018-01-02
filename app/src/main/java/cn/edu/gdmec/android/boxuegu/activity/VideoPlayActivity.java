@@ -24,8 +24,9 @@ public class VideoPlayActivity extends AppCompatActivity{
     private String videoPath;
     private int position;
     @Override
-    protected void onCreate(Bundle savedInstaceState){
-        super.onCreate(savedInstaceState);
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        //设置界面全屏显示
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_video_play);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

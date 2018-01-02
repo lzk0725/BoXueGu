@@ -92,7 +92,7 @@ public class DBUtils {
     }
     public boolean hasVideoPlay(int chapterId,int videoId,String userName){
         boolean hasVideo=false;
-        String sql="SELECT * FROM"+ SQLiteHelper.U_VIDEO_PLAY_LIST+"WHERE chapterId=? AND videoId=? AND userName=?";
+        String sql="SELECT * FROM "+ SQLiteHelper.U_VIDEO_PLAY_LIST+" WHERE chapterId=? AND videoId=? AND userName=?";
         Cursor cursor=db.rawQuery(sql,new String[]{chapterId+"",videoId+"",userName});
         if (cursor.moveToFirst()){
             hasVideo=true;
@@ -100,20 +100,22 @@ public class DBUtils {
         cursor.close();
         return hasVideo;
     }
+    //删除已经存在的视频记录
     public boolean delVideoPlay(int chapterId,int videoId,String userName){
         boolean delSuccess=false;
-        int row=db.delete(SQLiteHelper.U_VIDEO_PLAY_LIST,"chapterId=? AND videoId=? AND userName=?",
+        int row=db.delete(SQLiteHelper.U_VIDEO_PLAY_LIST," chapterId=? AND videoId=? AND userName=?",
                 new String[]{chapterId+"",videoId+"",userName});
         if (row>0){
             delSuccess=true;
         }
         return delSuccess;
     }
+    //获取视频记录信息
     public List<VideoBean> getVideoHistory(String userName){
-        String sql="SELECT * FROM"+ SQLiteHelper.U_VIDEO_PLAY_LIST+"WHERE userName=?";
+        String sql="SELECT * FROM "+ SQLiteHelper.U_VIDEO_PLAY_LIST+" WHERE userName=?";
         Cursor cursor=db.rawQuery(sql,new String[]{userName});
         List<VideoBean> vbl=new ArrayList<VideoBean>();
-        VideoBean bean=null;
+        VideoBean bean = null;
         while (cursor.moveToNext()){
             bean=new VideoBean();
             bean.chapterId=cursor.getInt(cursor.getColumnIndex("chapterId"));
@@ -122,7 +124,7 @@ public class DBUtils {
             bean.title=cursor.getString(cursor.getColumnIndex("title"));
             bean.secondTitle=cursor.getString(cursor.getColumnIndex("secondTitle"));
             vbl.add(bean);
-            bean=null;
+            bean = null;
         }
         cursor.close();
         return vbl;
