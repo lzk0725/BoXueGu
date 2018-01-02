@@ -65,7 +65,7 @@ public class DBUtils {
                 String[]{userName});
     }
 
-    //      保存视频播放记录
+
 //
 //    public void saveVideoPlayList(VideoBean bean,String userName) {
 //        //判断如果有此播放记录则需删除重新存放
@@ -74,6 +74,7 @@ public class DBUtils {
 //        //没有删除成功，则需跳出此方法不再执行下面语句
 //
 //    }
+//      保存视频播放记录
     public void saveVideoPlayList(VideoBean bean, String userName){
         if (hasVideoPlay(bean.chapterId,bean.videoId,userName)){
             boolean isDelete=delVideoPlay(bean.chapterId,bean.videoId,userName);

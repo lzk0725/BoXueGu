@@ -44,6 +44,8 @@ public class VideoListActivity extends AppCompatActivity implements View.OnClick
     private int chapterId;
     private String intro;
     private DBUtils db;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

@@ -71,7 +71,7 @@ public class CourseAdapter extends BaseAdapter {
         //开始绑定item数据
         List<CourseBean> list = (List<CourseBean>) getItem(position);
         if (list != null){
-            for (int i=0;i>list.size();i++){
+            for (int i=0;i<list.size();i++){
                 final CourseBean bean = list.get(i);
                 switch (i){
                     case 0:

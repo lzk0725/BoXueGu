@@ -25,7 +25,6 @@
         <activity android:name=".activity.FindPswActivity" />
         <activity android:name=".activity.ChangeUserInfoActivity"></activity>
         <activity android:name=".activity.PlayHistoryActivity" />
-
         <activity android:name=".activity.VideoPlayActivity" />
         <activity android:name=".activity.VideoListActivity"></activity>
     </application>
